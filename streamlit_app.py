@@ -25,7 +25,7 @@ def load_data():
         model="gpt-3.5-turbo",
         temperature=0.2,
         system_prompt="""You are an expert on
-        nineteenth century american history and abolitionis
+        the newspaper The Unionist.
         Keep your answers objective and based on
         facts – do not hallucinate events.""",
     )
