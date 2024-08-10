@@ -22,7 +22,7 @@ def load_data():
     reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
     docs = reader.load_data()
     Settings.llm = Gemini(
-        model="gemini-1.5-flash",
+        model="models/gemini-1.5-flash",
         temperature=0.2,
         system_prompt="""You are an expert on
         the newspaper The Unionist.
