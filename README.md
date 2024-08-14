@@ -1,6 +1,6 @@
-# 🦙📚 LlamaIndex - Chat with the Streamlit docs
+# 🦙📚 LlamaIndex Chatbot with Google Gemini
 
-Build a chatbot powered by LlamaIndex that augments GPT 3.5 with the contents of the Streamlit docs (or your own data).
+Build a chatbot powered by LlamaIndex that augments Google Gemini with local documents.
 
 ## Overview of the App
 
