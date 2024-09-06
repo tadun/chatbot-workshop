@@ -3,6 +3,10 @@ import openai
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.gemini import Gemini
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
+from llama_index.core.node_parser import SentenceSplitter
+from llama_index.core.extractors import TitleExtractor
+from llama_index.core.ingestion import IngestionPipeline, IngestionCache
+from llama_index.embeddings.gemini import GeminiEmbedding
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
@@ -30,7 +34,18 @@ def load_data():
         facts – do not hallucinate events.""",
         api_key = st.secrets.google_gemini_key,
     )
-    index = VectorStoreIndex.from_documents(docs)
+    # create the pipeline with transformations
+        pipeline = IngestionPipeline(
+        transformations=[
+            SentenceSplitter(chunk_size=25, chunk_overlap=0),
+            TitleExtractor(),
+            GeminiEmbedding(),
+    ]
+)
+
+# run the pipeline
+index = pipeline.run(documents=docs)
+    # index = VectorStoreIndex.from_documents(docs)
     return index
 
 
