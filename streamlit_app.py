@@ -44,7 +44,7 @@ def load_data():
 )
 
 # run the pipeline
-index = pipeline.run(documents=docs)
+    index = pipeline.run(documents=docs)
     # index = VectorStoreIndex.from_documents(docs)
     return index
 
