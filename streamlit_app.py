@@ -35,7 +35,7 @@ def load_data():
         api_key = st.secrets.google_gemini_key,
     )
     # create the pipeline with transformations
-        pipeline = IngestionPipeline(
+    pipeline = IngestionPipeline(
         transformations=[
             SentenceSplitter(chunk_size=25, chunk_overlap=0),
             TitleExtractor(),
