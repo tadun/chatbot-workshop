@@ -37,7 +37,7 @@ def load_data():
     # create the pipeline with transformations
     pipeline = IngestionPipeline(
         transformations=[
-            SentenceSplitter(chunk_size=200, chunk_overlap=0),
+            SentenceSplitter(chunk_size=1024, chunk_overlap=0),
             TitleExtractor(),
             GeminiEmbedding(),
     ]
