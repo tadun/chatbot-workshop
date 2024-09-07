@@ -39,7 +39,7 @@ def load_data():
         transformations=[
             SentenceSplitter(chunk_size=1024, chunk_overlap=0),
             TitleExtractor(),
-            GeminiEmbedding(),
+            GeminiEmbedding()
     ]
 )
 
