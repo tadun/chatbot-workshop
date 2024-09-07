@@ -33,19 +33,28 @@ def load_data():
         Keep your answers objective and based on
         facts – do not hallucinate events.""",
         api_key = st.secrets.google_gemini_key,
+        safe = [
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE",
+    },
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE",
+    },
+],
     )
-    # create the pipeline with transformations
-    pipeline = IngestionPipeline(
-        transformations=[
-            SentenceSplitter(chunk_size=1024, chunk_overlap=0),
-            TitleExtractor(),
-            GeminiEmbedding()
-    ]
-)
+ 
 
-# run the pipeline
-    index = pipeline.run(documents=docs)
-    # index = VectorStoreIndex.from_documents(docs)
+    index = VectorStoreIndex.from_documents(docs)
     return index
 
 
