@@ -3,10 +3,6 @@ import openai
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.gemini import Gemini
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from llama_index.core.node_parser import SentenceSplitter
-from llama_index.core.extractors import TitleExtractor
-from llama_index.core.ingestion import IngestionPipeline, IngestionCache
-from llama_index.embeddings.gemini import GeminiEmbedding
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
@@ -25,6 +21,10 @@ if "messages" not in st.session_state.keys():  # Initialize the chat messages hi
 def load_data():
     reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
     docs = reader.load_data()
+
+    Settings.chunk_size = 512
+    Settings.chunk_overlap = 50
+    
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
         temperature=0.2,
