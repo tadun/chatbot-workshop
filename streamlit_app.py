@@ -77,7 +77,10 @@ for message in st.session_state.messages:  # Write message history to UI
 # If last message is not from assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
-        response_stream = st.session_state.chat_engine.stream_chat(prompt)
+        try:
+            response_stream = st.session_state.chat_engine.stream_chat(prompt)
+         except:
+            st.error("We got an error from Google Gemini - this may mean the question had a risk of producing a harmful response. Consider asking the question in a different way.")    
         with st.spinner("waiting"):
             try:
                 st.write_stream(response_stream.response_gen)
