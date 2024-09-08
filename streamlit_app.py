@@ -22,8 +22,8 @@ def load_data():
     reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
     docs = reader.load_data()
 
-    Settings.chunk_size = 512
-    Settings.chunk_overlap = 50
+    Settings.chunk_size = 128
+    Settings.chunk_overlap = 16
     
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
