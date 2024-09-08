@@ -81,7 +81,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("waiting"):
             try:
                 st.write_stream(response_stream.response_gen)
-            except IndexError:
+            except
                 st.error("We hit a bump - let's try again")
                 try:
                     resp = st.session_state.chat_engine.chat(prompt)[0]
