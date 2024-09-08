@@ -79,7 +79,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         try:
             response_stream = st.session_state.chat_engine.stream_chat(prompt)
-       
         with st.spinner("waiting"):
             try:
                 st.write_stream(response_stream.response_gen)
