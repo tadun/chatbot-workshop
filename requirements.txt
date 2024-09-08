@@ -1,8 +1,7 @@
 streamlit
-openai
 llama-index
 llama-index-llms-openai
 llama-index-llms-gemini
-llama-index-embeddings-gemini
 nltk
 pypdf
+retrying
