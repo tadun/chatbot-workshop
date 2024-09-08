@@ -83,13 +83,11 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 st.write_stream(response_stream.response_gen)
             except IndexError:
                 st.error("We hit a bump - let's try again")
-                st.write("test1")
                 try:
-                    st.write("test2")
                     resp = st.session_state.chat_engine.chat(prompt)[0]
                     st.write(resp)
                 except:
-                    st.error("We got an error from Google Gemini - usually this means the question had a risk of producing a harmful response. Try asking the question a different way.")
+                    st.error("We got an error from Google Gemini - usually this means the question had a risk of producing a harmful response. Consider asking the question in a different way.")
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
         st.session_state.messages.append(message)
