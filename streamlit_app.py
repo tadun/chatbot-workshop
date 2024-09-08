@@ -31,7 +31,8 @@ def load_data():
         system_prompt="""You are an expert on
         the newspaper The Unionist.
         Keep your answers objective and based on
-        facts – do not hallucinate events.""",
+        facts – do not hallucinate events.
+        Keep your answers under 100 words.""",
         api_key = st.secrets.google_gemini_key,
         safe = [
     {
