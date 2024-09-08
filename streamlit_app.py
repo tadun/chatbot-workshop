@@ -85,7 +85,8 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 st.write_stream(response_stream.response_gen)
             except IndexError:
                 st.error("We hit a bump - let's try again")
-                st.write_stream(response_stream.response_gen)
+                resp = Gemini().complete(prompt)
+                st.write(resp)
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
         st.session_state.messages.append(message)
