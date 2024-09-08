@@ -77,20 +77,21 @@ for message in st.session_state.messages:  # Write message history to UI
 # If last message is not from assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
+        response_stream = ""
         try:
             response_stream = st.session_state.chat_engine.stream_chat(prompt)
-            with st.spinner("waiting"):
-                try:
-                    st.write_stream(response_stream.response_gen)
-                except:
-                    st.error("We hit a bump - let's try again")
-                    try:
-                        resp = st.session_state.chat_engine.chat(prompt)[0]
-                        st.write(resp)
-                    except:
-                        st.error("We got an error from Google Gemini - this may mean the question had a risk of producing a harmful response. Consider asking the question in a different way.")
         except:
-            st.error("We got an error from Google Gemini - this may mean the question had a risk of producing a harmful response. Consider asking the question in a different way.")    
+            st.error("We got an error from Google Gemini - this may mean the question had a risk of producing a harmful response. Consider asking the question in a different way.")        
+        with st.spinner("waiting"):
+            try:
+                st.write_stream(response_stream.response_gen)
+            except:
+                st.error("We hit a bump - let's try again")
+                try:
+                    resp = st.session_state.chat_engine.chat(prompt)[0]
+                    st.write(resp)
+                except:
+                    st.error("We got an error from Google Gemini - this may mean the question had a risk of producing a harmful response. Consider asking the question in a different way.")
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
         st.session_state.messages.append(message)
