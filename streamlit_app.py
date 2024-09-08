@@ -86,7 +86,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
             except IndexError:
                 st.error("We hit a bump - let's try again")
                 st.write("test1")
-                resp = st.session_state.chat_engine.complete(prompt)
+                resp = st.session_state.chat_engine.chat(prompt)
                 st.write("test2")
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
