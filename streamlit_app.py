@@ -79,7 +79,10 @@ if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         response_stream = st.session_state.chat_engine.stream_chat(prompt)
         with st.spinner("waiting"):
-            st.write_stream(response_stream.response_gen)
+            try:
+                st.write_stream(response_stream.response_gen)
+            except IndexError:
+                st.error(‘We hit a bump - please try your question again’)
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
         st.session_state.messages.append(message)
