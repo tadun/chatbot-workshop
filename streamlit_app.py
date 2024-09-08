@@ -3,6 +3,7 @@ import openai
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.gemini import Gemini
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
+from retrying import retry
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 openai.api_key = st.secrets.openai_key
@@ -83,7 +84,8 @@ if st.session_state.messages[-1]["role"] != "assistant":
             try:
                 st.write_stream(response_stream.response_gen)
             except IndexError:
-                st.error("We hit a bump - please try your question again")
+                st.error("We hit a bump - let's try again")
+                st.write_stream(response_stream.response_gen)
         message = {"role": "assistant", "content": response_stream.response}
         # Add response to message history
         st.session_state.messages.append(message)
