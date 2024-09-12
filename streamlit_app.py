@@ -24,7 +24,7 @@ def load_data():
 
     Settings.chunk_size = 128
     Settings.chunk_overlap = 16
-    Settings.embed_model = OpenAIEmbedding()
+    Settings.embed_model = GeminiEmbedding()
     
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
