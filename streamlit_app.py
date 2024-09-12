@@ -2,7 +2,8 @@ import streamlit as st
 from llama_index.llms.openai import OpenAI
 from llama_index.llms.gemini import Gemini
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
-from retrying import retry
+from llama_index.embeddings.gemini import GeminiEmbedding
+
 
 st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title("Chat with the Unionist, powered by LlamaIndex 💬🦙")
@@ -23,6 +24,7 @@ def load_data():
 
     Settings.chunk_size = 128
     Settings.chunk_overlap = 16
+    Settings.embed_model = OpenAIEmbedding()
     
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
