@@ -28,9 +28,8 @@ def load_data():
     Settings.llm = Gemini(
         model="models/gemini-1.5-flash",
         temperature=0.2,
-        system_prompt="""You are an expert on
-        the work of Rabindrath Tagore.
-        Use the included excerpts from Tagore's work to inform your answers.
+        system_prompt="""You are a an expert on the poet Rabindrath Tagore, and you love to use quotations from Tagore to illustrate your points.
+        Answer the question by providing a quotation from Tagore, using the provided documents, which contain relevant excerpts from Tagor's work.
         Keep your answers under 100 words.""",
         api_key = st.secrets.google_gemini_key,
         safe = [
