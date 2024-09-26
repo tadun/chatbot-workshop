@@ -1,6 +1,6 @@
 # 🦙📚 LlamaIndex Chatbot with Google Gemini
 
-Build a chatbot powered by LlamaIndex that augments Google Gemini with local documents.
+Build a chatbot powered by LlamaIndex that augments Google Gemini with local documents. Based on the chatbot described in <a href="https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/">this blog post.</a>
 
 ## Overview of the App
 
@@ -11,18 +11,11 @@ Build a chatbot powered by LlamaIndex that augments Google Gemini with local doc
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://llamaindex-chat-with-docs.streamlit.app/)
+<a href="https://sjsu-chatbot-workshop.streamlit.app/">https://sjsu-chatbot-workshop.streamlit.app/</a>
 
-## Get an OpenAI API key
+## Build your own copy
 
-You can get your own OpenAI API key by following the following instructions:
-1. Go to https://platform.openai.com/account/api-keys.
-2. Click on the `+ Create new secret key` button.
-3. Next, enter an identifier name (optional) and click on the `Create secret key` button.
-4. Add your API key to your `secrets.toml` file. If you don't already have a `secrets.toml` file, add a folder named `.streamlit`, create a file called `secrets.toml` within the folder, and add the following to it:
-``` openai_key = <your key here> ```
-   
-Alternatively, you can use [Streamlit Community Cloud's secrets management feature](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management) to add your API key via the web interface.
+Follow the steps in the workshop slides at <a href="https://tiny.sjsu.edu/chatbot-workshop">https://tiny.sjsu.edu/chatbot-workshop</a>
 
 > [!CAUTION]
 > Don't commit your secrets file to your GitHub repository. The `.gitignore` file in this repo includes `.streamlit/secrets.toml` and `secrets.toml`. 
