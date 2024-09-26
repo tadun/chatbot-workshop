@@ -23,3 +23,7 @@ Follow the steps in the workshop slides at <a href="https://tiny.sjsu.edu/chatbo
 ## Try out the app
 
 Once the app is loaded, enter your question about the Streamlit library and wait for a response.
+
+## Source texts
+
+The demo version of the chatbot uses texts from the writer <a href="https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/">Rabindranath Tagore</a>. These texts are available from <a href-"https://www.gutenberg.org/ebooks/search/?query=tagore&submit_search=Go%21"> Project Gutenberg</a>.
